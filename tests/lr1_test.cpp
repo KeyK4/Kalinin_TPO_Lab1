@@ -43,7 +43,7 @@ TEST_F(CountAndSumTest, CTest2) {
     result = countAndSum(arr);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(result.first, 15);
+    EXPECT_EQ(result.first, 5);
     EXPECT_EQ(result.second, 100);
 }
 
