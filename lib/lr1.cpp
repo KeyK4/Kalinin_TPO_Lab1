@@ -9,6 +9,7 @@ std::pair<float, float> prodAndSum(const std::vector<float>& array, int b, int d
         if (b <= i && i <= d) {
             product *= array[i];
         }
+        i++;
     }
     return std::make_pair(sum, product);
 }
