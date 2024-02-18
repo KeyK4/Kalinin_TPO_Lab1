@@ -1,13 +1,14 @@
 #include "lr1.h"
 
 std::pair<float, float> prodAndSum(const std::vector<float>& array, int b, int d) {
-    int count = 0;
-    int total = 0;
-    for (int num : array) {
-        if (num % 5 == 0 && num % 7 != 0) {
-            count++;
-            total += num;
+    float sum = 0;
+    float product = 1;
+    int i = 0;
+    while (i < array.size()) {
+        sum += array[i];
+        if (b <= i && i <= d) {
+            product *= array[i];
         }
     }
-    return std::make_pair(count, total);
+    return std::make_pair(sum, product);
 }

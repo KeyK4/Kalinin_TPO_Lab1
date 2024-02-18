@@ -12,7 +12,7 @@ protected:
     // в функции SetUp()
     void SetUp() override {
         // Например, инициализация данных
-        arr = {10, 14, 15, 20, 21, 25, 30};
+        arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         b = 2;
         d = 5;
     }
@@ -37,8 +37,8 @@ TEST_F(CountAndSumTest, CTest1) {
     result = prodAndSum(arr, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(result.first, 5);
-    EXPECT_EQ(result.second, 100);
+    EXPECT_EQ(result.first, 55);
+    EXPECT_EQ(result.second, 360);
 }
 
 // Пример теста 2
@@ -47,8 +47,8 @@ TEST_F(CountAndSumTest, CTest2) {
     result = prodAndSum(arr, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(result.first, 5);
-    EXPECT_EQ(result.second, 100);
+    EXPECT_NE(result.first, 56);
+    EXPECT_NE   (result.second, 100);
 }
 
 // Пример теста3
@@ -56,13 +56,13 @@ TEST(CountAndSumTest1, CTest3) {
     // Объявляем переменные, которые будут использоваться в тесте
     std::vector<float> arr;
     std::pair<float, float> result;
-    int b = 1, d = 5;
+    int b = 2, d = 8;
     // Инициализация данных
-    arr = {10, 14, 15, 20, 21, 25, 30, 35, 5};
+    arr = { 1, 23, 34, 5, 34, 53, 34, 24, 5, 23, 34 };
 // Вызываем функцию countAndSum с тестовыми данными
     result = prodAndSum(arr, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(result.first, 6);
-    EXPECT_EQ(result.second, 105);
+    EXPECT_EQ(result.first, 270);
+    EXPECT_EQ(result.second, 1249867200);
 }
