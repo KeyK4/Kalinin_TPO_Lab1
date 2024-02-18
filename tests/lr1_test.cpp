@@ -23,14 +23,14 @@ protected:
     }
 
     // Объявляем переменные, которые будут использоваться в тестах
-    std::vector<int> arr;
-    std::pair<int, int> result;
+    std::vector<float> arr;
+    std::pair<float, float> result;
 };
 
 // Пример теста1
 TEST_F(CountAndSumTest, CTest1) {
 // Вызываем функцию countAndSum с тестовыми данными
-    result = countAndSum(arr);
+    result = prodAndSum(arr);
 
 // Проверяем ожидаемые результаты
     EXPECT_EQ(result.first, 5);
@@ -40,7 +40,7 @@ TEST_F(CountAndSumTest, CTest1) {
 // Пример теста 2
 TEST_F(CountAndSumTest, CTest2) {
 // Вызываем функцию countAndSum с тестовыми данными
-    result = countAndSum(arr);
+    result = prodAndSum(arr);
 
 // Проверяем ожидаемые результаты
     EXPECT_EQ(result.first, 5);
@@ -50,12 +50,12 @@ TEST_F(CountAndSumTest, CTest2) {
 // Пример теста3
 TEST(CountAndSumTest1, CTest3) {
     // Объявляем переменные, которые будут использоваться в тесте
-    std::vector<int> arr;
-    std::pair<int, int> result;
+    std::vector<float> arr;
+    std::pair<float, float> result;
     // Инициализация данных
     arr = {10, 14, 15, 20, 21, 25, 30, 35, 5};
 // Вызываем функцию countAndSum с тестовыми данными
-    result = countAndSum(arr);
+    result = prodAndSum(arr);
 
 // Проверяем ожидаемые результаты
     EXPECT_EQ(result.first, 6);

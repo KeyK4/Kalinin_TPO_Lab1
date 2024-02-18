@@ -1,6 +1,6 @@
 #include "lr1.h"
 
-std::pair<int, int> countAndSum(const std::vector<int>& array) {
+std::pair<float, float> prodAndSum(const std::vector<float>& array) {
     int count = 0;
     int total = 0;
     for (int num : array) {

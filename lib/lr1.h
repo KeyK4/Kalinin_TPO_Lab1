@@ -2,4 +2,4 @@
 
 #include <vector>
 
-std::pair<int, int> countAndSum(const std::vector<int>& array);
+std::pair<float, float> prodAndSum(const std::vector<float>& array);
