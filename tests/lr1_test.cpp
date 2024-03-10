@@ -3,6 +3,9 @@
 #include <vector>
 #include <utility>
 #include <string>
+#include <cmath>
+
+using namespace std;
 
 // Подробнее https://google.github.io/googletest/reference/testing.html
 
