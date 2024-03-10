@@ -1,5 +1,6 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
-std::pair<float, float> prodAndSum(const std::vector<float>& array, int b, int d);
+std::pair<float, float> prodAndSum(std::string filename, int b, int d);

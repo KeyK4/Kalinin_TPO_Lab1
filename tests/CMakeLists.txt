@@ -24,8 +24,11 @@ target_link_libraries(
     GTest::gtest_main
 )
 
+configure_file(mainInput.txt ${CMAKE_CURRENT_BINARY_DIR}/mainInput.txt COPYONLY)
+
 target_include_directories(lr1_tests PUBLIC ${PROJECT_SOURCE_DIR})
 
 include(GoogleTest)
 
 gtest_discover_tests(lr1_tests)
+

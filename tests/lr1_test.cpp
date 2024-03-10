@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include <utility>
+#include <string>
 
 // Подробнее https://google.github.io/googletest/reference/testing.html
 
@@ -12,7 +13,7 @@ protected:
     // в функции SetUp()
     void SetUp() override {
         // Например, инициализация данных
-        arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        filename = "mainInput.txt";
         b = 2;
         d = 5;
     }
@@ -21,48 +22,54 @@ protected:
     // в функции TearDown()
     void TearDown() override {
         // Например, очистка данных
-        arr.clear();
+        filename.clear();
     }
 
     // Объявляем переменные, которые будут использоваться в тестах
-    std::vector<float> arr;
+    std::string filename;
     std::pair<float, float> result;
     int b;
     int d;
+
+    
 };
+
+float roundToPresicion(float num) {
+        return round(num * 1000000) / 1000000;
+    }
 
 // Пример теста1
 TEST_F(CountAndSumTest, CTest1) {
 // Вызываем функцию countAndSum с тестовыми данными
-    result = prodAndSum(arr, b, d);
+    result = prodAndSum(filename, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(result.first, 55);
-    EXPECT_EQ(result.second, 360);
+    EXPECT_EQ(roundToPresicion(result.first), 46.1111145);
+    EXPECT_EQ(roundToPresicion(result.second), 404.0700989);
 }
 
 // Пример теста 2
 TEST_F(CountAndSumTest, CTest2) {
 // Вызываем функцию countAndSum с тестовыми данными
-    result = prodAndSum(arr, b, d);
+    result = prodAndSum(filename, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_NE(result.first, 56);
-    EXPECT_NE   (result.second, 100);
+    EXPECT_NE(roundToPresicion(result.first), 56);
+    EXPECT_NE(roundToPresicion(result.second), 100);
 }
 
 // Пример теста3
 TEST(CountAndSumTest1, CTest3) {
     // Объявляем переменные, которые будут использоваться в тесте
-    std::vector<float> arr;
+    std::string filename;
     std::pair<float, float> result;
     int b = 2, d = 8;
     // Инициализация данных
-    arr = { 1, 23, 34, 5, 34, 53, 34, 24, 5, 23, 34 };
+    filename = "mainInput.txt";
 // Вызываем функцию countAndSum с тестовыми данными
-    result = prodAndSum(arr, b, d);
+    result = prodAndSum(filename, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(result.first, 270);
-    EXPECT_EQ(result.second, 1249867200);
+    EXPECT_EQ(roundToPresicion(result.first), 46.1111145);
+    EXPECT_EQ(roundToPresicion(result.second), 213327.9843750);
 }
