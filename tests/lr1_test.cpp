@@ -37,8 +37,8 @@ protected:
     
 };
 
-float roundToPresicion(float num) {
-        return floor(num * 1000000) / 1000000;
+bool isEqualsActualAndAssumption(float actual, float assumption) {
+        return abs(actual - assumption) < 0.000001;
     }
 
 // Пример теста1
@@ -47,8 +47,8 @@ TEST_F(CountAndSumTest, CTest1) {
     result = prodAndSum(filename, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(roundToPresicion(result.first), 46.111114);
-    EXPECT_EQ(roundToPresicion(result.second), 404.070098);
+    EXPECT_TRUE(isEqualsActualAndAssumption(result.first, 46.111114));
+    EXPECT_TRUE(isEqualsActualAndAssumption(result.second, 404.070098));
 }
 
 // Пример теста 2
@@ -57,8 +57,8 @@ TEST_F(CountAndSumTest, CTest2) {
     result = prodAndSum(filename, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_NE(roundToPresicion(result.first), 56);
-    EXPECT_NE(roundToPresicion(result.second), 100);
+    EXPECT_FALSE(isEqualsActualAndAssumption(result.first, 56));
+    EXPECT_FALSE(isEqualsActualAndAssumption(result.second, 100));
 }
 
 // Пример теста3
@@ -73,6 +73,6 @@ TEST(CountAndSumTest1, CTest3) {
     result = prodAndSum(filename, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(roundToPresicion(result.first), 46.111114);
-    EXPECT_EQ(roundToPresicion(result.second), 213327.984375);
+    EXPECT_TRUE(isEqualsActualAndAssumption(result.first, 46.111114));
+    EXPECT_TRUE(isEqualsActualAndAssumption(result.second, 213327.984375));
 }
