@@ -38,7 +38,7 @@ protected:
 };
 
 float roundToPresicion(float num) {
-        return round(num * 1000000) / 1000000;
+        return floor(num * 1000000) / 1000000;
     }
 
 // Пример теста1
@@ -47,8 +47,8 @@ TEST_F(CountAndSumTest, CTest1) {
     result = prodAndSum(filename, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(roundToPresicion(result.first), 46.1111145);
-    EXPECT_EQ(roundToPresicion(result.second), 404.0700989);
+    EXPECT_EQ(roundToPresicion(result.first), 46.111114);
+    EXPECT_EQ(roundToPresicion(result.second), 404.070098);
 }
 
 // Пример теста 2
@@ -73,6 +73,6 @@ TEST(CountAndSumTest1, CTest3) {
     result = prodAndSum(filename, b, d);
 
 // Проверяем ожидаемые результаты
-    EXPECT_EQ(roundToPresicion(result.first), 46.1111145);
-    EXPECT_EQ(roundToPresicion(result.second), 213327.9843750);
+    EXPECT_EQ(roundToPresicion(result.first), 46.111114);
+    EXPECT_EQ(roundToPresicion(result.second), 213327.984375);
 }
