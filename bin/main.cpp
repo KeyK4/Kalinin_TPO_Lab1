@@ -33,7 +33,9 @@ int main() {
     pair<float, float> result = sumAndProd(fin, b, d);
     fin.close();
 
+    cout << result.first << endl;
     cout << isEqualsActualAndAssumption(result.first, assumeSum) << std::endl;
+    cout << result.second << endl;
     cout << isEqualsActualAndAssumption(result.second, assumeProd) << std::endl;
     
     int a;

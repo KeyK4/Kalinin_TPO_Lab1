@@ -7,7 +7,7 @@
 
 using namespace std;
 
-pair<float, float> sumAndProd(iostream &fin, int b, int d) {
+pair<float, float> sumAndProd(ifstream &fin, int b, int d) {
     string s;
     int i = 0;
     float sum = 0;
@@ -45,4 +45,5 @@ pair<float, float> sumAndProd(iostream &fin, int b, int d) {
             //Выкинуть ошибку, что массив слишком длинный
         }
     }
+    return make_pair(sum, product);
 }
