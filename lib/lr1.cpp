@@ -7,39 +7,24 @@
 
 using namespace std;
 
-pair<float, float> prodAndSum(string filename, int b, int d) {
-    ifstream fin(filename);
-    vector<float> array;
-    double doubleValue;
+pair<float, float> sumAndProd(iostream &fin, int b, int d) {
+    string s;
     int i = 0;
-    while (fin >> doubleValue) {
+    float sum = 0;
+    float product = 1;
+    while (fin >> s) {
+        if (s == "EOTEST") {
+            return make_pair(sum, product);
+        }
         float floatValue;
+        double doubleValue = stof(s);
         if (doubleValue <= std::numeric_limits<float>::max() && doubleValue >= -std::numeric_limits<float>::max()) {
             floatValue = static_cast<float>(doubleValue);
         }
         else {
             // Преобразование небезопасно выкинуть ошибку
         }
-        array.push_back(floatValue);
-        i++;
-        if (i > 1024) {
-            //Выкинуть ошибку, что массив слишком длинный
-        }
-    }
-    fin.close();
-
-    //if (array.size() < d) {
-    //    //Выкинуть ошибку, что диапазон выходит за границы массива
-    //}
-    //if (b < 0) {
-    //    //Выкинуть ошибку, что диапазон выходит за границы массива
-    //}
-
-    float sum = 0;
-    float product = 1;
-    i = 0;
-    while (i < array.size()) {
-        double dSum = sum + array[i];
+        double dSum = sum + floatValue;
         if (dSum <= std::numeric_limits<float>::max() && dSum >= -std::numeric_limits<float>::max()) {
             sum = static_cast<float>(dSum);
         }
@@ -47,7 +32,7 @@ pair<float, float> prodAndSum(string filename, int b, int d) {
             // Преобразование небезопасно выкинуть ошибку
         }
         if (b <= i && i <= d) {
-            long double dProd = product * array[i];
+            long double dProd = product * floatValue;
             if (dProd <= std::numeric_limits<float>::max() && dProd >= -std::numeric_limits<float>::max()) {
                 product = static_cast<float>(dProd);
             }
@@ -56,6 +41,8 @@ pair<float, float> prodAndSum(string filename, int b, int d) {
             }
         }
         i++;
+        if (i > 1024) {
+            //Выкинуть ошибку, что массив слишком длинный
+        }
     }
-    return std::make_pair(sum, product);
 }

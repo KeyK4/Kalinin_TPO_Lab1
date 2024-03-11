@@ -2,5 +2,6 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
 
-std::pair<float, float> prodAndSum(std::string filename, int b, int d);
+std::pair<float, float> sumAndProd(std::ifstream &fin, int b, int d);
