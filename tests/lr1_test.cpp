@@ -5,6 +5,7 @@
 #include <string>
 #include <cmath>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -37,7 +38,6 @@ protected:
     // Здесь вы можете освободить ресурсы, если это необходимо
     // в функции TearDown()
     void TearDown() override {
-        // Например, очистка данных
     }
 
     // Объявляем переменные, которые будут использоваться в тестах
@@ -45,8 +45,8 @@ protected:
     int b;
     int d;
 
-    int assumeSum;
-    int assumeProd;
+    float assumeSum;
+    float assumeProd;
 
     
 };
@@ -82,8 +82,8 @@ protected:
     int b;
     int d;
 
-    int assumeSum;
-    int assumeProd;
+    float assumeSum;
+    float assumeProd;
 
 
 };
