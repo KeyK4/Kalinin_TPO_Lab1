@@ -4,17 +4,25 @@
 #include <limits>
 #include <iomanip>
 #include <string>
+#include <tuple>
 
 using namespace std;
 
-pair<float, float> sumAndProd(ifstream &fin, int b, int d) {
+tuple<float, float, string> sumAndProd(ifstream &fin, int b, int d) {
     string s;
     int i = 0;
     float sum = 0;
     float product = 1;
+    int numProd = 0;
     while (fin >> s) {
         if (s == "EOTEST") {
-            return make_pair(sum, product);
+            if (numProd) {
+                return { sum, product, ""};
+            }
+            else {
+                return { sum, 0, "" };
+            }
+                
         }
         float floatValue;
         double doubleValue = stof(s);
@@ -22,28 +30,29 @@ pair<float, float> sumAndProd(ifstream &fin, int b, int d) {
             floatValue = static_cast<float>(doubleValue);
         }
         else {
-            // Преобразование небезопасно выкинуть ошибку
+            return { 0, 0, "InputValueOutOfFloatRange" };
         }
         double dSum = sum + floatValue;
         if (dSum <= std::numeric_limits<float>::max() && dSum >= -std::numeric_limits<float>::max()) {
             sum = static_cast<float>(dSum);
         }
         else {
-            // Преобразование небезопасно выкинуть ошибку
+            return { 0, 0, "SumValueOutOfFloatRange" };
         }
         if (b <= i && i <= d) {
             long double dProd = product * floatValue;
             if (dProd <= std::numeric_limits<float>::max() && dProd >= -std::numeric_limits<float>::max()) {
                 product = static_cast<float>(dProd);
+                numProd++;
             }
             else {
-                // Преобразование небезопасно выкинуть ошибку
+                return { 0, 0, "ProductValueOutOfFloatRange" };
             }
         }
         i++;
         if (i > 1024) {
-            //Выкинуть ошибку, что массив слишком длинный
+            return { 0, 0, "MaxNuberOfElementsLimitExeeded" };
         }
     }
-    return make_pair(sum, product);
+    return { sum, product, "TestNotEndsWithEOTEST" };
 }

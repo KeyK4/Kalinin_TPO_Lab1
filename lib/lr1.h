@@ -3,5 +3,6 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <tuple>
 
-std::pair<float, float> sumAndProd(std::ifstream &fin, int b, int d);
+std::tuple<float, float, std::string> sumAndProd(std::ifstream &fin, int b, int d);

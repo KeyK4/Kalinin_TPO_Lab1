@@ -6,6 +6,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <tuple>
 
 using namespace std;
 
@@ -21,17 +22,19 @@ protected:
         string inp;
         if (fin >> inp) {
             string delimiter = ";";
-            int delimiterPosition = inp.find(delimiter);
-            string b_string = inp.substr(0, delimiterPosition);
+            int fitstDelimiterPosition = inp.find(delimiter);
+            string b_string = inp.substr(0, fitstDelimiterPosition);
             b = stoi(b_string);
-            string d_string = inp.substr(delimiterPosition + 1, inp.size());
+            string d_string = inp.substr(fitstDelimiterPosition + 1, inp.size());
             d = stoi(d_string);
             fin >> inp;
-            delimiterPosition = inp.find(delimiter);
-            string assumeSumString = inp.substr(0, delimiterPosition);
+            fitstDelimiterPosition = inp.find(delimiter);
+            int secondDelimiterPosition = inp.rfind(delimiter);
+            string assumeSumString = inp.substr(0, fitstDelimiterPosition);
             assumeSum = stof(assumeSumString);
-            string assumeProdString = inp.substr(delimiterPosition + 1, inp.size());
+            string assumeProdString = inp.substr(fitstDelimiterPosition + 1, secondDelimiterPosition);
             assumeProd = stof(assumeProdString);
+            assumeErr = inp.substr(secondDelimiterPosition + 1, inp.size());
         }
     }
 
@@ -41,51 +44,21 @@ protected:
     }
 
     // Объявляем переменные, которые будут использоваться в тестах
-    std::pair<float, float> result;
     int b;
     int d;
 
-    float assumeSum;
-    float assumeProd;
+    float assumeSum, sum;
+    float assumeProd, prod;
+    string assumeErr, err;
 
     
 };
 
-class CountAndSumTestCF : public ::testing::Test {
+class CountAndSumTestCF : public::CountAndSumTestOF {
 protected:
-    void SetUp() override {
-        string inp;
-        if (fin >> inp) {
-            string delimiter = ";";
-            int delimiterPosition = inp.find(delimiter);
-            string b_string = inp.substr(0, delimiterPosition);
-            b = stoi(b_string);
-            string d_string = inp.substr(delimiterPosition + 1, inp.size());
-            d = stoi(d_string);
-            fin >> inp;
-            delimiterPosition = inp.find(delimiter);
-            string assumeSumString = inp.substr(0, delimiterPosition);
-            assumeSum = stof(assumeSumString);
-            string assumeProdString = inp.substr(delimiterPosition + 1, inp.size());
-            assumeProd = stof(assumeProdString);
-        }
-    }
-
-    // Здесь вы можете освободить ресурсы, если это необходимо
-    // в функции TearDown()
     void TearDown() override {
         fin.close();
     }
-
-    // Объявляем переменные, которые будут использоваться в тестах
-    std::pair<float, float> result;
-    int b;
-    int d;
-
-    float assumeSum;
-    float assumeProd;
-
-
 };
 
 bool isEqualsActualAndAssumption(float actual, float assumption) {
@@ -94,21 +67,20 @@ bool isEqualsActualAndAssumption(float actual, float assumption) {
 
 // Пример теста1
 TEST_F(CountAndSumTestOF, CTest1) {
-// Вызываем функцию countAndSum с тестовыми данными
-    result = sumAndProd(fin, b, d);
+    tie(sum, prod, err) = sumAndProd(fin, b, d);
 
-// Проверяем ожидаемые результаты
-    EXPECT_TRUE(isEqualsActualAndAssumption(result.first, assumeSum));
-    EXPECT_TRUE(isEqualsActualAndAssumption(result.second, assumeProd));
+    EXPECT_TRUE(isEqualsActualAndAssumption(sum, assumeSum));
+    EXPECT_TRUE(isEqualsActualAndAssumption(prod, assumeProd));
+    EXPECT_EQ(err, assumeErr);
 }
 
 TEST_F(CountAndSumTestCF, CTest2) {
-    // Вызываем функцию countAndSum с тестовыми данными
-    result = sumAndProd(fin, b, d);
 
-    // Проверяем ожидаемые результаты
-    EXPECT_TRUE(isEqualsActualAndAssumption(result.first, assumeSum));
-    EXPECT_TRUE(isEqualsActualAndAssumption(result.second, assumeProd));
+    tie(sum, prod, err) = sumAndProd(fin, b, d);
+
+    EXPECT_TRUE(isEqualsActualAndAssumption(sum, assumeSum));
+    EXPECT_TRUE(isEqualsActualAndAssumption(prod, assumeProd));
+    EXPECT_EQ(err, assumeErr);
 }
 
 

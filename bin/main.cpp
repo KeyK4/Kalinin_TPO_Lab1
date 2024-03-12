@@ -14,29 +14,36 @@ int main() {
     int b, d;
     float assumeSum, assumeProd;
     ifstream fin("test.txt");
-    string inp;
+    string inp, assumeErr;
 
     if (fin >> inp) {
         string delimiter = ";";
-        int delimiterPosition = inp.find(delimiter);
-        string b_string = inp.substr(0, delimiterPosition);
+        int fitstDelimiterPosition = inp.find(delimiter);
+        string b_string = inp.substr(0, fitstDelimiterPosition);
         b = stoi(b_string);
-        string d_string = inp.substr(delimiterPosition + 1, inp.size());
+        string d_string = inp.substr(fitstDelimiterPosition + 1, inp.size());
         d = stoi(d_string);
         fin >> inp;
-        delimiterPosition = inp.find(delimiter);
-        string assumeSumString = inp.substr(0, delimiterPosition);
+        fitstDelimiterPosition = inp.find(delimiter);
+        int secondDelimiterPosition = inp.rfind(delimiter);
+        string assumeSumString = inp.substr(0, fitstDelimiterPosition);
         assumeSum = stof(assumeSumString);
-        string assumeProdString = inp.substr(delimiterPosition + 1, inp.size());
+        string assumeProdString = inp.substr(fitstDelimiterPosition + 1, secondDelimiterPosition);
         assumeProd = stof(assumeProdString);
+        assumeErr = inp.substr(secondDelimiterPosition + 1, inp.size());
     }
-    pair<float, float> result = sumAndProd(fin, b, d);
+    float sum, prod;
+    string err;
+    tie(sum, prod, err) = sumAndProd(fin, b, d);
     fin.close();
 
-    cout << result.first << endl;
-    cout << isEqualsActualAndAssumption(result.first, assumeSum) << std::endl;
-    cout << result.second << endl;
-    cout << isEqualsActualAndAssumption(result.second, assumeProd) << std::endl;
+    cout << sum << endl;
+    cout << isEqualsActualAndAssumption(sum, assumeSum) << std::endl;
+    cout << prod << endl;
+    cout << isEqualsActualAndAssumption(prod, assumeProd) << std::endl;
+    cout << err << endl;
+    bool c = err == assumeErr;
+    cout << c << std::endl;
     
     int a;
     cin >> a;
