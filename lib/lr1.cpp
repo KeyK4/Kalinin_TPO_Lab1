@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <string>
 #include <tuple>
+#include <cmath>
 
 using namespace std;
 
@@ -14,35 +15,29 @@ tuple<float, float, string> sumAndProd(ifstream &fin, int b, int d) {
     float sum = 0;
     float product = 1;
     int numProd = 0;
-    while (fin >> s) {
-        if (s == "EOTEST") {
-            if (numProd) {
-                return { sum, product, ""};
-            }
-            else {
-                return { sum, 0, "" };
-            }
-                
-        }
+    double doubleValue;
+    while (fin >> doubleValue) {
         float floatValue;
-        double doubleValue = stof(s);
+        doubleValue = round(doubleValue * 1000000)/1000000;
         if (doubleValue <= std::numeric_limits<float>::max() && doubleValue >= -std::numeric_limits<float>::max()) {
             floatValue = static_cast<float>(doubleValue);
         }
         else {
             return { 0, 0, "InputValueOutOfFloatRange" };
         }
-        double dSum = sum + floatValue;
-        if (dSum <= std::numeric_limits<float>::max() && dSum >= -std::numeric_limits<float>::max()) {
-            sum = static_cast<float>(dSum);
-        }
-        else {
-            return { 0, 0, "SumValueOutOfFloatRange" };
+        if (floatValue > 0) {
+            double dSum = sum + floatValue;
+            if (dSum <= std::numeric_limits<float>::max() && dSum >= -std::numeric_limits<float>::max()) {
+                sum += floatValue;
+            }
+            else {
+                return { 0, 0, "SumValueOutOfFloatRange" };
+            }
         }
         if (b <= i && i <= d) {
             long double dProd = product * floatValue;
             if (dProd <= std::numeric_limits<float>::max() && dProd >= -std::numeric_limits<float>::max()) {
-                product = static_cast<float>(dProd);
+                product *= floatValue;
                 numProd++;
             }
             else {
@@ -54,5 +49,10 @@ tuple<float, float, string> sumAndProd(ifstream &fin, int b, int d) {
             return { 0, 0, "MaxNuberOfElementsLimitExeeded" };
         }
     }
-    return { sum, product, "TestNotEndsWithEOTEST" };
+    if (numProd) {
+        return { sum, product, "" };
+    }
+    else {
+        return { sum, 0, "" };
+    }
 }
