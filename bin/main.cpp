@@ -34,7 +34,7 @@ int main() {
     }
     float sum, prod;
     string err;
-    tie(sum, prod, err) = sumAndProd(fin, b, d);
+    tie(sum, prod, err) = sumAndProd(fin, b, d, "logMain.txt");
     fin.close();
 
     cout << sum << endl;

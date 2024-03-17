@@ -74,7 +74,7 @@ bool isEqualsActualAndAssumption(double actual, float assumption) {
 TEST_F(CountAndSumTestOF, CTest1) {
     ifstream fin("test1.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log1.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -85,7 +85,7 @@ TEST_F(CountAndSumTestOF, CTest1) {
 TEST_F(CountAndSumTestOF, CTest2) {
     ifstream fin("test2.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log2.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -96,7 +96,7 @@ TEST_F(CountAndSumTestOF, CTest2) {
 TEST_F(CountAndSumTestOF, CTest3) {
     ifstream fin("test3.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log3.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -107,7 +107,7 @@ TEST_F(CountAndSumTestOF, CTest3) {
 TEST_F(CountAndSumTestOF, CTest4) {
     ifstream fin("test4.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log4.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -118,7 +118,7 @@ TEST_F(CountAndSumTestOF, CTest4) {
 TEST_F(CountAndSumTestOF, CTest5) {
     ifstream fin("test5.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log5.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -129,7 +129,7 @@ TEST_F(CountAndSumTestOF, CTest5) {
 TEST_F(CountAndSumTestOF, CTest6) {
     ifstream fin("test6.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log6.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -140,7 +140,7 @@ TEST_F(CountAndSumTestOF, CTest6) {
 TEST_F(CountAndSumTestOF, CTest7) {
     ifstream fin("test7.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log7.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -151,7 +151,7 @@ TEST_F(CountAndSumTestOF, CTest7) {
 TEST_F(CountAndSumTestOF, CTest8) {
     ifstream fin("test8.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log8.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -163,7 +163,7 @@ TEST_F(CountAndSumTestOF, CTest8) {
 TEST_F(CountAndSumTestOF, CTest9) {
     ifstream fin("test9.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log9.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -175,7 +175,7 @@ TEST_F(CountAndSumTestOF, CTest9) {
 TEST_F(CountAndSumTestOF, CTest10) {
     ifstream fin("test10.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log10.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -186,7 +186,7 @@ TEST_F(CountAndSumTestOF, CTest10) {
 TEST_F(CountAndSumTestOF, CTest11) {
     ifstream fin("test11.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log11.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -197,7 +197,7 @@ TEST_F(CountAndSumTestOF, CTest11) {
 TEST_F(CountAndSumTestOF, CTest12) {
     ifstream fin("test12.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log12.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -208,7 +208,7 @@ TEST_F(CountAndSumTestOF, CTest12) {
 TEST_F(CountAndSumTestOF, CTest13) {
     ifstream fin("test13.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log13.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -219,7 +219,7 @@ TEST_F(CountAndSumTestOF, CTest13) {
 TEST_F(CountAndSumTestOF, CTest14) {
     ifstream fin("test14.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log14.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -230,7 +230,7 @@ TEST_F(CountAndSumTestOF, CTest14) {
 TEST_F(CountAndSumTestOF, CTest15) {
     ifstream fin("test15.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log15.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -241,7 +241,7 @@ TEST_F(CountAndSumTestOF, CTest15) {
 TEST_F(CountAndSumTestOF, CTest16) {
     ifstream fin("test16.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log16.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -252,7 +252,7 @@ TEST_F(CountAndSumTestOF, CTest16) {
 TEST_F(CountAndSumTestOF, CTest17) {
     ifstream fin("test17.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log17.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -263,7 +263,7 @@ TEST_F(CountAndSumTestOF, CTest17) {
 TEST_F(CountAndSumTestOF, CTest18) {
     ifstream fin("test18.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log18.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -274,7 +274,7 @@ TEST_F(CountAndSumTestOF, CTest18) {
 TEST_F(CountAndSumTestOF, CTest19) {
     ifstream fin("test19.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log19.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -285,7 +285,7 @@ TEST_F(CountAndSumTestOF, CTest19) {
 TEST_F(CountAndSumTestOF, CTest20) {
     ifstream fin("test20.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log20.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -296,7 +296,7 @@ TEST_F(CountAndSumTestOF, CTest20) {
 TEST_F(CountAndSumTestOF, CTest21) {
     ifstream fin("test21.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log21.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -307,7 +307,7 @@ TEST_F(CountAndSumTestOF, CTest21) {
 TEST_F(CountAndSumTestOF, CTest22) {
     ifstream fin("test22.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log22.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
@@ -318,13 +318,10 @@ TEST_F(CountAndSumTestOF, CTest22) {
 TEST_F(CountAndSumTestOF, CTest23) {
     ifstream fin("test23.txt");
     MyTest test = parseTest(fin);
-    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d);
+    tie(sum, prod, err) = sumAndProd(fin, test.b, test.d, "log23.txt");
     fin.close();
 
     EXPECT_TRUE(isEqualsActualAndAssumption(sum, test.assumeSum));
     EXPECT_TRUE(isEqualsActualAndAssumption(prod, test.assumeProd));
     EXPECT_EQ(err, test.assumeErr);
-
-    int a;
-    cin >> a;
 }
